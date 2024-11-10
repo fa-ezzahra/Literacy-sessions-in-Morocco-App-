@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Messagerie</title>
+    <link rel="stylesheet" href="page home.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <div class="sidebare">
+        <div class="icon">
+          <!-- The content for the icon is defined in CSS -->
+        </div>
+        <div class="navigation">
+          <img id="home" src="home.svg" onclick="window.location.href='/pagegroupe'" />
+          <img src="comptenonactive.svg" onclick="window.location.href='/index'" />
+          <img src="setting.svg" onclick="window.location.href='/ajouteruser'" />
+          <img src="messageactive.svg" />
+        </div>
+        <div class="logout">
+          <img src="logout.svg" onclick="window.location.href='/'"/>
+        </div>
+      </div>
+      <div class="tests">
+        <div class="objet">
+          <p>Section commentaire</p>
+        </div>
+        <div class="conteneur-comment">
+          <% comments.forEach(comment => { %>
+          <div class="carte-comment">
+            <div class="user"><h3><%= comment.nom %> <%= comment.prenom %></h3></div>
+            <hr />
+            <div class="comment">
+              <p><%= comment.comment %></p>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

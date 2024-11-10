@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Groupe</title>
+  <link rel="stylesheet" href="page home.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="header">
+    <div class="sidebare">
+      <div class="icon"></div>
+      <div class="navigation">
+        <img id="homeactive" src="homeactive.svg" />
+        <img src="comptenonactive.svg" onclick="window.location.href='/index'"/>
+        <img src="setting.svg" onclick="window.location.href='/ajouteruser'" />
+        <img src="message.svg"  onclick="window.location.href='/messagerie'"/>
+      </div>
+      <div class="logout">
+        <img src="logout.svg" onclick="window.location.href='/'"/>
+      </div>
+    </div>
+    <div class="tests">
+      <div class="objet">
+        <p id="pprof">Prof</p>
+        <p id="pcentre">Centre</p>
+        <p id="peleve">Eleve</p>
+      </div>
+      <div class="tableau">
+        <table id="prof">
+          <tr>
+            <th>id prof</th>
+            <th>nom</th>
+            <th>prenom</th>
+            <th>matiere</th>
+            <th>ville</th>
+            
+          </tr>
+          <% enseignants.forEach(enseignant => { %>
+            <tr>
+              <td><%= enseignant.id %></td>
+              <td><%= enseignant.nom_ens %></td>
+              <td><%= enseignant.prenom_ens %></td>
+              <td><%= enseignant.matiere %></td>
+              <td><%= enseignant.ville_ens %></td>
+              
+            </tr>
+          <% }) %>
+        </table>
+        <table id="centre">
+          <tr>
+            <th>id centre</th>
+            <th>nbr-salle</th>
+            <th>ville</th>
+            
+          </tr>
+          <% centres.forEach(centre => { %>
+            <tr>
+              <td><%= centre.id_centre %></td>
+              <td><%= centre.nb_salles %></td>
+              <td><%= centre.ville_centre %></td>
+              
+            </tr>
+          <% }) %>
+        </table>
+        <table id="eleve">
+          <tr>
+            <th>id eleve</th>
+            <th>nom</th>
+            <th>prenom</th>
+            
+          <% eleves.forEach(eleve => { %>
+            <tr>
+              <td><%= eleve.id_eleve %></td>
+              <td><%= eleve.nom_eleve %></td>
+              <td><%= eleve.prenom_eleve %></td>
+              
+            </tr>
+          <% }) %>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script>
+    var form1 = document.getElementById("prof");
+    var form2 = document.getElementById("centre");
+    var form3 = document.getElementById("eleve");
+    var pprof = document.getElementById("pprof");
+    var pcentre = document.getElementById("pcentre");
+    var peleve = document.getElementById("peleve");
+
+    pprof.addEventListener("click", () => {
+      form2.style.display = "none";
+      form3.style.display = "none";
+      form1.style.display = "table";
+      pprof.style.opacity = "1";
+      pcentre.style.opacity = "0.3";
+      peleve.style.opacity = "0.3";
+    });
+
+    pcentre.addEventListener("click", () => {
+      form1.style.display = "none";
+      form3.style.display = "none";
+      form2.style.display = "table";
+      pprof.style.opacity = "0.3";
+      pcentre.style.opacity = "1";
+      peleve.style.opacity = "0.3";
+    });
+
+    peleve.addEventListener("click", () => {
+      form1.style.display = "none";
+      form2.style.display = "none";
+      form3.style.display = "table";
+      pprof.style.opacity = "0.3";
+      pcentre.style.opacity = "0.3";
+      peleve.style.opacity = "1";
+    });
+  </script>
+</body>
+</html>

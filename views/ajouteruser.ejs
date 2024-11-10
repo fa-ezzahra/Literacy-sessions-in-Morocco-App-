@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>page groupe</title>
+    <link rel="stylesheet" href="page home.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header">
+     
+      <div class="sidebare">
+        <div class="icon">
+          <!--j' ai rien ecris ici car le contenu est defini dans css-->
+        </div>
+        <div class="navigation">
+          <img
+            id="home"
+            src="home.svg"
+            onclick="window.location.href='/pagegroupe'"
+          />
+          <img src="comptenonactive.svg" onclick="window.location.href='/index'"/>
+          <img src="settingactive.svg" />
+          <img src="message.svg" onclick="window.location.href='/messagerie'" />
+        </div>
+        <div class="logout">
+          <img src="logout.svg" onclick="window.location.href='/'"/>
+        </div>
+      </div>
+      <div class="tests">
+        <% if (messages.error) { %>
+          <div class="alert alert-danger"><%= messages.error %></div>
+        <% } %>
+        
+        <% if (messages.success) { %>
+          <div class="alert alert-success"><%= messages.success %></div>
+        <% } %> 
+        <div class="objet">
+          <!--<div id="dprof">-->
+          <p>ajouter les utilisateur</p>
+          <!--</div>-->
+          
+        </div>
+        
+        <form action="/ajouteruser/adduser" method="POST" id="prof">
+          <div class="form">
+            <div class="#">
+              <label for="">username</label>
+              <input type="text" name="username" id="username" placeholder="entre le username" />
+            </div>
+
+            <div class="#">
+              <label for="">password</label>
+              <input type="text" name="password" id="password" placeholder="entre le password" />
+            </div>
+           
+          </div>
+          <div class="butt">
+            <button>submit</button>
+          </div>
+        </form>
+      </div>
+       
+      </div>
+    </div>
+    
+  </body>
+</html>

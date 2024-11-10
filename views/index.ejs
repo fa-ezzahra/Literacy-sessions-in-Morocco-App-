@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Groupe</title>
+  <link rel="stylesheet" href="page home.css" />
+  <link rel="icon" href="images/totoro_1.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container mt-4">
+    <div class="card">
+      <div class="card-body">
+        <% if (messages.error) { %>
+          <div class="alert alert-danger"><%= messages.error %></div>
+        <% } %>
+        
+        <% if (messages.success) { %>
+          <div class="alert alert-success"><%= messages.success %></div>
+        <% } %> 
+        <div class="header">
+          <div class="sidebare">
+            <div class="icon"></div>
+            <div class="navigation">
+              <img src="home.svg" onclick="window.location.href='/pagegroupe'" />
+              <img src="compte.svg" />
+              <img src="setting.svg" onclick="window.location.href='/ajouteruser'"/>
+              <img src="message.svg" onclick="window.location.href='/messagerie'"/>
+            </div>
+            <div class="logout">
+              <img src="logout.svg" onclick="window.location.href='/'"/>
+            </div>
+          </div>
+          <div class="tests">
+            <div class="objet">
+              <p id="pprof">prof</p>
+              <p id="pcentre">centre</p>
+              <p id="peleve">eleve</p>
+              <p id="pgroupe">groupe</p>
+            </div>
+            <form action="/index/prof" method="POST" id="prof">
+              <div class="form">
+                <div class="#">
+                  <label for="nom">Nom</label>
+                  <input type="text" name="nom" placeholder="Enter the name" />
+                </div>
+                <div class="#">
+                  <label for="prenom">Prenom</label>
+                  <input type="text" name="prenom" placeholder="Enter the prenom" />
+                </div>
+                <div class="#">
+                  <label for="matiere">Matiere</label>
+                  <input type="text" name="matiere" placeholder="Enter the matiere" />
+                </div>
+                <div class="#">
+                  <label for="ville">Ville</label>
+                  <input type="text" name="ville" placeholder="Enter the ville" />
+                </div>
+              </div>
+              <div class="butt">
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+            <form action="/index/centre" method="POST" id="centre">
+              <div class="form">
+                <div class="#">
+                  <label for="nom_centre">Nom Centre</label>
+                  <input type="text" name="nom_centre" placeholder="Enter the nom centre" />
+                </div>
+                <div class="#">
+                  <label for="ville_centre">Ville Centre</label>
+                  <input type="text" name="ville_centre" placeholder="Enter the ville centre" />
+                </div>
+                <div class="#">
+                  <label for="nb_salles">Nb Salles</label>
+                  <input type="text" name="nb_salles" placeholder="Enter the nb salles" />
+                </div>
+              </div>
+              <div class="butt">
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+            <form action="/index/eleve" method="POST" id="eleve">
+              <div class="form">
+                <div class="#">
+                  <label for="nom_eleve">Nom</label>
+                  <input type="text" name="nom_eleve" placeholder="Enter the nom" />
+                </div>
+                <div class="#">
+                  <label for="prenom_eleve">Prenom</label>
+                  <input type="text" name="prenom_eleve" placeholder="Enter the prenom" />
+                </div>
+                <div class="#">
+                  <label for="id_groupe">ID Groupe</label>
+                  <input type="text" name="id_groupe" placeholder="Enter the id groupe" />
+                </div>
+                <div class="#">
+                  <label for="id_centre">ID Centre</label>
+                  <input type="text" name="id_centre" placeholder="Enter the id centre" />
+                </div>
+              </div>
+              <div class="butt">
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+            <form action="/index/groupe" method="POST" id="groupe">
+              <div class="form">
+                <div class="#">
+                  <label for="nom_eleve">numero groupe</label>
+                  <input type="text" name="numero_groupe" placeholder="Enter the nom" />
+                </div>
+                <div class="#">
+                  <label for="prenom_eleve">nombre eleve</label>
+                  <input type="text" name="nombre_eleve" placeholder="Enter the prenom" />
+                </div>
+                <div class="#">
+                  <label for="id_centre">ID Centre</label>
+                  <input type="text" name="id_centre" placeholder="Enter the id centre" />
+                </div>
+              </div>
+              <div class="butt">
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script >
+    var form1 = document.getElementById("prof");
+    var form2 = document.getElementById("centre");
+    var form3 = document.getElementById("eleve");
+     var form4 = document.getElementById("groupe")
+    var pprof = document.getElementById("pprof");
+    var pcentre = document.getElementById("pcentre");
+    var peleve = document.getElementById("peleve");
+    var pgroupe = document.getElementById("pgroupe")
+
+    pgroupe.addEventListener("click",()=>{
+      form2.style.display = "none";
+      form3.style.display = "none";
+      form1.style.display = "none";
+      form4.style.display = "table";
+      pgroupe.style.opacity = "1";
+      pcentre.style.opacity = "0.3";
+      pprof.style.opacity = "0.3";
+      peleve.style.opacity = "0.3";
+      
+    })
+    pprof.addEventListener("click", () => {
+      form2.style.display = "none";
+      form3.style.display = "none";
+      form4.style.display = "none";
+
+      form1.style.display = "table";
+      pprof.style.opacity = "1";
+      pcentre.style.opacity = "0.3";
+      peleve.style.opacity = "0.3";
+      pgroupe.style.opacity = "0.3";
+
+    });
+
+    pcentre.addEventListener("click", () => {
+      form1.style.display = "none";
+      form3.style.display = "none";
+      form4.style.display = "none";
+
+      form2.style.display = "table";
+      pprof.style.opacity = "0.3";
+      pcentre.style.opacity = "1";
+      peleve.style.opacity = "0.3";
+      pgroupe.style.opacity = "0.3";
+
+    });
+
+    peleve.addEventListener("click", () => {
+      form1.style.display = "none";
+      form2.style.display = "none";
+      form3.style.display = "table";
+      form4.style.display = "none";
+      pgroupe.style.opacity = "0.3";
+      pprof.style.opacity = "0.3";
+      pcentre.style.opacity = "0.3";
+      peleve.style.opacity = "1";
+    });
+  </script>
+</body>
+</html>
